@@ -1,7 +1,6 @@
 import 'dart:math';
-
 import 'package:get/get.dart';
-import 'package:getx_plain/model/item.dart';
+import 'package:getx_plain/src/model/item.dart';
 
 class ItemsController extends GetxController {
   final _items = List.generate(

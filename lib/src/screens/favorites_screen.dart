@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_plain/controllers/items_controller.dart';
-import 'package:getx_plain/screens/items_screen.dart';
+import 'package:getx_plain/src/controllers/items_controller.dart';
+import 'package:getx_plain/src/screens/items_screen.dart';
 
 class FavoriteScreen extends StatelessWidget {
   FavoriteScreen({Key? key}) : super(key: key);

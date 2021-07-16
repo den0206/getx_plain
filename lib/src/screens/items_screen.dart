@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_plain/controllers/items_controller.dart';
-import 'package:getx_plain/model/item.dart';
-import 'package:getx_plain/screens/favorites_screen.dart';
+import 'package:getx_plain/src/controllers/items_controller.dart';
+import 'package:getx_plain/src/model/item.dart';
+import 'package:getx_plain/src/screens/favorites_screen.dart';
 
 class ItemsScreen extends StatelessWidget {
   ItemsScreen({Key? key}) : super(key: key);
