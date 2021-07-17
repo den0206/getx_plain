@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ImagesWidget extends StatelessWidget {
-  const ImagesWidget({
+class ImagesCarousel extends StatelessWidget {
+  const ImagesCarousel({
     Key? key,
     required this.images,
     this.isExpanded = false,

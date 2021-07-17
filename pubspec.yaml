@@ -1,12 +1,7 @@
 name: getx_plain
 description: A new Flutter project.
 
-
-
-publish_to: 'none' 
-
-
-
+publish_to: 'none'
 
 version: 1.0.0+1
 
@@ -16,15 +11,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  bottom_navy_bar: ^6.0.0
   cupertino_icons: ^1.0.2
   get: ^4.1.4
+  line_icons: ^2.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-
-
 
 flutter:
 
@@ -39,30 +33,3 @@ flutter:
     - assets/images/icons/
     - assets/images/notifications/
     - assets/images/welcome/
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  

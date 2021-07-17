@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
+import 'package:getx_plain/src/constants/colors.dart';
 import 'package:getx_plain/src/extensions/image_widgets.dart';
 import 'package:get/get.dart';
-import 'package:getx_plain/src/screens/auth/signup_screen.dart';
-import 'package:getx_plain/src/screens/main/main_tab_screen.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
 
-  static const routeName = '/Login_Screen';
+  static const routeName = '/SignUp';
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +28,8 @@ class LoginScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     _Header(),
-                    _LoginForm(),
-                    _Signup(),
+                    _SignUpForm(),
+                    _Login(),
                   ],
                 ),
               ),
@@ -42,8 +41,8 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-class _Signup extends StatelessWidget {
-  const _Signup({
+class _Login extends StatelessWidget {
+  const _Login({
     Key? key,
   }) : super(key: key);
 
@@ -51,18 +50,24 @@ class _Signup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-      margin: EdgeInsets.only(bottom: 17),
+      margin: EdgeInsets.only(
+        bottom: 17,
+      ),
       child: Center(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("This Button", style: TextStyle(fontSize: 17)),
+            Text(
+              "Already Have Account",
+              style: TextStyle(fontSize: 17),
+            ),
             TextButton(
-                onPressed: () => Get.toNamed(SignUpScreen.routeName),
-                child: Text(
-                  "Sign Up for Free",
-                  style: TextStyle(fontSize: 17),
-                ))
+              onPressed: () => Get.back(),
+              child: Text(
+                "Log in",
+                style: TextStyle(fontSize: 17),
+              ),
+            )
           ],
         ),
       ),
@@ -70,8 +75,8 @@ class _Signup extends StatelessWidget {
   }
 }
 
-class _LoginForm extends StatelessWidget {
-  const _LoginForm({
+class _SignUpForm extends StatelessWidget {
+  const _SignUpForm({
     Key? key,
   }) : super(key: key);
 
@@ -82,25 +87,47 @@ class _LoginForm extends StatelessWidget {
         horizontal: 27,
         vertical: 20,
       ),
-      margin: EdgeInsets.only(top: 8),
+      margin: EdgeInsets.only(top: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Email",
-            style: TextStyle(color: Color(0xFF707070), fontSize: 18),
+            "Name",
+            style: TextStyle(color: kAuthColor, fontSize: 18),
           ),
           TextField(
             decoration: InputDecoration(
-              hintText: "Email",
-              focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(
-                  color: Color(0xFF707070),
-                ),
-              ),
+              hintText: "Enter your name",
               enabledBorder: UnderlineInputBorder(
                 borderSide: BorderSide(
-                  color: Color(0xFF707070),
+                  color: kAuthColor,
+                ),
+              ),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: kAuthColor,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Text(
+            "Email",
+            style: TextStyle(color: kAuthColor, fontSize: 18),
+          ),
+          TextField(
+            decoration: InputDecoration(
+              hintText: "Enter your Email",
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: kAuthColor,
+                ),
+              ),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: kAuthColor,
                 ),
               ),
             ),
@@ -110,45 +137,68 @@ class _LoginForm extends StatelessWidget {
           ),
           Text(
             "Password",
-            style: TextStyle(color: Color(0xFF707070), fontSize: 18),
+            style: TextStyle(color: kAuthColor, fontSize: 18),
           ),
           TextField(
             obscureText: true,
             decoration: InputDecoration(
-              hintText: "Password",
-              focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(
-                  color: Color(0xFF707070),
-                ),
-              ),
+              hintText: "Enter your Password",
               enabledBorder: UnderlineInputBorder(
                 borderSide: BorderSide(
-                  color: Color(0xFF707070),
+                  color: kAuthColor,
+                ),
+              ),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: kAuthColor,
                 ),
               ),
             ),
           ),
           SizedBox(
-            height: 10,
+            height: 15,
           ),
-          Align(
-            alignment: Alignment.centerRight,
-            child: TextButton(
-              child: Text("Forgot your Password"),
-              onPressed: () {},
+          Text(
+            "Confirm Password",
+            style: TextStyle(color: kAuthColor, fontSize: 18),
+          ),
+          TextField(
+            obscureText: true,
+            decoration: InputDecoration(
+              hintText: "Enter your Password",
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: kAuthColor,
+                ),
+              ),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: kAuthColor,
+                ),
+              ),
             ),
           ),
+          SizedBox(height: 23),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "privacy policy",
+              style: TextStyle(fontSize: 16),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
           GestureDetector(
-            onTap: () => Get.toNamed(MainTabScreen.routeName),
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 27),
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                padding: EdgeInsets.all(10),
                 height: 60,
                 decoration: BoxDecoration(
                   color: Color(0xFF0377dd),
                   borderRadius: BorderRadius.all(
-                    Radius.circular(15),
+                    Radius.circular(16),
                   ),
                 ),
                 child: Row(
@@ -158,7 +208,7 @@ class _LoginForm extends StatelessWidget {
                       width: 8,
                     ),
                     Text(
-                      "Log in",
+                      "Sign Up",
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
@@ -170,14 +220,16 @@ class _LoginForm extends StatelessWidget {
                       width: 40,
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
+                        ),
                       ),
                       child: Center(
                         child: Icon(
                           Icons.arrow_forward_ios,
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -214,9 +266,8 @@ class _Header extends StatelessWidget {
           ImagesCarousel(
             heightImages: 200,
             images: [
-              "assets/images/welcome/off_road.png",
-              "assets/images/welcome/by_my_car.png",
-              "assets/images/welcome/city_driver.png",
+              "assets/images/welcome/fast_car.png",
+              "assets/images/welcome/vehicle_sale.png",
             ],
           ),
           SizedBox(
@@ -230,7 +281,7 @@ class _Header extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
-                    "Login",
+                    "Sign Up",
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 27,
@@ -253,6 +304,9 @@ class _Header extends StatelessWidget {
                 ),
               ],
             ),
+          ),
+          SizedBox(
+            height: 13,
           ),
         ],
       ),
