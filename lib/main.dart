@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:getx_plain/src/screens/auth/signup_screen.dart';
+import 'package:getx_plain/src/screens/main/book_car_screen.dart';
 import 'package:getx_plain/src/screens/main/main_tab_screen.dart';
 
 import 'src/screens/auth/login_screen.dart';
@@ -34,6 +35,10 @@ class MyApp extends StatelessWidget {
           name: SignUpScreen.routeName,
           page: () => SignUpScreen(),
         ),
+        GetPage(
+          name: BookCarScreen.routeName,
+          page: () => BookCarScreen(),
+        )
       ],
       initialRoute: LoginScreen.routeName,
     );

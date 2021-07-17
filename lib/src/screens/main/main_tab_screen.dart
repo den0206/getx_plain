@@ -9,7 +9,7 @@ class TabController extends GetxController {
   final pageController = PageController();
   final animationDuration = Duration(milliseconds: 350);
   late List<BottomNavyBarItem> navigationItems;
-  var currntIndex = 0.obs;
+  var currntIndex = 0;
 
   @override
   void onInit() {
@@ -26,6 +26,16 @@ class TabController extends GetxController {
     Get.delete();
     super.onClose();
   }
+
+  void setTabIndex(int value) {
+    currntIndex = value;
+    pageController.animateToPage(
+      currntIndex,
+      duration: animationDuration,
+      curve: Curves.ease,
+    );
+    update();
+  }
 }
 
 class MainTabScreen extends StatelessWidget {
@@ -41,25 +51,14 @@ class MainTabScreen extends StatelessWidget {
         return Scaffold(
           body: PageView(
             controller: ctr.pageController,
-            onPageChanged: (index) {
-              ctr.currntIndex.value = index;
-            },
+            onPageChanged: ctr.setTabIndex,
             physics: NeverScrollableScrollPhysics(),
             children: [HomeScreen(), Text("Search")],
           ),
-          bottomNavigationBar: Obx(
-            () => BottomNavyBar(
-              selectedIndex: ctr.currntIndex.value,
-              onItemSelected: (index) {
-                ctr.currntIndex.value = index;
-                ctr.pageController.animateToPage(
-                  index,
-                  duration: ctr.animationDuration,
-                  curve: Curves.ease,
-                );
-              },
-              items: ctr.navigationItems,
-            ),
+          bottomNavigationBar: BottomNavyBar(
+            selectedIndex: ctr.currntIndex,
+            onItemSelected: ctr.setTabIndex,
+            items: ctr.navigationItems,
           ),
         );
       },
