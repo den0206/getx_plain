@@ -32,6 +32,18 @@ class BookCarScreen extends StatelessWidget {
               ),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 8),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: IconButton(
+                icon: Icon(Icons.close),
+                onPressed: () {
+                  Get.back();
+                },
+              ),
+            ),
+          )
         ],
       ),
       bottomNavigationBar: _bottomBar(),

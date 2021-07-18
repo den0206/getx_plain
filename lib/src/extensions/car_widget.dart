@@ -3,7 +3,7 @@ import 'package:get/instance_manager.dart';
 import 'package:getx_plain/src/constants/colors.dart';
 import 'package:get/get.dart';
 import 'package:getx_plain/src/model/car.dart';
-import 'package:getx_plain/src/screens/main/book_car_screen.dart';
+import 'package:getx_plain/src/screens/home/book_car_screen.dart';
 
 class CarWidget extends StatelessWidget {
   const CarWidget({

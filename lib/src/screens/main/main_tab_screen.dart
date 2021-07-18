@@ -1,8 +1,10 @@
+import 'package:badges/badges.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:getx_plain/src/screens/main/home_screen.dart';
+import 'package:getx_plain/src/screens/home/home_screen.dart';
+import 'package:getx_plain/src/screens/search/search_screen.dart';
 import 'package:line_icons/line_icons.dart';
 
 class TabController extends GetxController {
@@ -16,6 +18,24 @@ class TabController extends GetxController {
     navigationItems = [
       BottomNavyBarItem(icon: Icon(LineIcons.home), title: Text("Home")),
       BottomNavyBarItem(icon: Icon(LineIcons.search), title: Text("Search")),
+      BottomNavyBarItem(
+        title: Text("Notification"),
+        icon: Badge(
+          padding: EdgeInsets.only(top: 5, bottom: 5, right: 4, left: 5),
+          animationType: BadgeAnimationType.scale,
+          animationDuration: Duration(milliseconds: 200),
+
+          /// state mng
+          badgeContent: Text(
+            "9",
+            style: TextStyle(fontSize: 12, color: Colors.white),
+          ),
+          child: Icon(
+            LineIcons.bell,
+            color: Colors.black54,
+          ),
+        ),
+      )
     ];
     super.onInit();
   }
@@ -53,7 +73,7 @@ class MainTabScreen extends StatelessWidget {
             controller: ctr.pageController,
             onPageChanged: ctr.setTabIndex,
             physics: NeverScrollableScrollPhysics(),
-            children: [HomeScreen(), Text("Search")],
+            children: [HomeScreen(), SearchScreen(), Text("Notification")],
           ),
           bottomNavigationBar: BottomNavyBar(
             selectedIndex: ctr.currntIndex,

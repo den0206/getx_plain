@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:getx_plain/src/screens/auth/signup_screen.dart';
-import 'package:getx_plain/src/screens/main/book_car_screen.dart';
+import 'package:getx_plain/src/screens/home/book_car_screen.dart';
+import 'package:getx_plain/src/screens/main/main_binding.dart';
 import 'package:getx_plain/src/screens/main/main_tab_screen.dart';
 
 import 'src/screens/auth/login_screen.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      initialBinding: MainBinding(),
       getPages: [
         GetPage(
           name: MainTabScreen.routeName,

@@ -1,43 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:getx_plain/src/constants/colors.dart';
-import 'package:getx_plain/src/data/samle_dealers.dart';
-import 'package:getx_plain/src/data/sample_cars.dart';
 import 'package:getx_plain/src/extensions/car_widget.dart';
 import 'package:getx_plain/src/extensions/dealer_widget.dart';
 import 'package:getx_plain/src/extensions/image_widgets.dart';
 import 'package:getx_plain/src/extensions/title_widgets.dart';
 import 'package:get/get.dart';
-import 'package:getx_plain/src/model/car.dart';
-import 'package:getx_plain/src/model/dealer.dart';
+import 'package:getx_plain/src/screens/home/home_controller.dart';
 
-class HomeController extends GetxController {
-  List<Car> cars = [];
-  List<Dealer> dealers = [];
-
-  late Car selectedCar;
-
-  @override
-  void onInit() {
-    super.onInit();
-    loadData();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  loadData() {
-    cars = sampleCars;
-    dealers = sampleDealers;
-    selectedCar = cars[3];
-  }
-}
-
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends GetView<HomeController> {
   HomeScreen({Key? key}) : super(key: key);
-  final ctr = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -104,10 +76,10 @@ class HomeScreen extends StatelessWidget {
                         margin: EdgeInsets.only(bottom: 15),
                         child: ListView.builder(
                           physics: BouncingScrollPhysics(),
-                          itemCount: ctr.dealers.length,
+                          itemCount: controller.dealers.length,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (BuildContext context, int index) {
-                            final dealer = ctr.dealers[index];
+                            final dealer = controller.dealers[index];
                             return DealerWidget(
                               dealer: dealer,
                               index: index,
@@ -134,7 +106,7 @@ class _TopDeals extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ctr = Get.find<HomeController>();
+    final controller = Get.find<HomeController>();
 
     return Column(
       children: [
@@ -179,10 +151,10 @@ class _TopDeals extends StatelessWidget {
           height: 280,
           child: ListView.builder(
             physics: BouncingScrollPhysics(),
-            itemCount: ctr.cars.length,
+            itemCount: controller.cars.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              final car = ctr.cars[index];
+              final car = controller.cars[index];
 
               return CarWidget(
                 car: car,
@@ -262,7 +234,7 @@ class _Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ctr = Get.find<HomeController>();
+    final controller = Get.find<HomeController>();
 
     return Container(
       padding: EdgeInsets.symmetric(vertical: 16),
@@ -279,7 +251,7 @@ class _Header extends StatelessWidget {
           SizedBox(
             height: 22,
           ),
-          ImagesCarousel(images: ctr.selectedCar.images),
+          ImagesCarousel(images: controller.selectedCar.images),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Row(
