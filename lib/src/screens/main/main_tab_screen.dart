@@ -4,12 +4,16 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:getx_plain/src/screens/home/home_screen.dart';
+import 'package:getx_plain/src/screens/notification/notification_controller.dart';
+import 'package:getx_plain/src/screens/notification/notification_screen.dart';
 import 'package:getx_plain/src/screens/search/search_screen.dart';
 import 'package:line_icons/line_icons.dart';
 
 class TabController extends GetxController {
   final pageController = PageController();
   final animationDuration = Duration(milliseconds: 350);
+
+  final notification = Get.find<NotificationController>().notificationMessages;
   late List<BottomNavyBarItem> navigationItems;
   var currntIndex = 0;
 
@@ -26,15 +30,24 @@ class TabController extends GetxController {
           animationDuration: Duration(milliseconds: 200),
 
           /// state mng
-          badgeContent: Text(
-            "9",
-            style: TextStyle(fontSize: 12, color: Colors.white),
+          badgeContent: Obx(
+            () => Text(
+              notification.length.toString(),
+              style: TextStyle(fontSize: 12, color: Colors.white),
+            ),
           ),
           child: Icon(
             LineIcons.bell,
             color: Colors.black54,
           ),
         ),
+      ),
+      BottomNavyBarItem(
+        icon: Icon(
+          LineIcons.userAlt,
+          color: Colors.black54,
+        ),
+        title: Text("Profile"),
       )
     ];
     super.onInit();
@@ -47,13 +60,14 @@ class TabController extends GetxController {
     super.onClose();
   }
 
-  void setTabIndex(int value) {
+  void setTabIndex(int value) async {
     currntIndex = value;
-    pageController.animateToPage(
-      currntIndex,
-      duration: animationDuration,
-      curve: Curves.ease,
-    );
+    pageController.jumpToPage(currntIndex);
+    // await pageController.animateToPage(
+    //   value,
+    //   duration: animationDuration,
+    //   curve: Curves.ease,
+    // );
     update();
   }
 }
@@ -73,7 +87,12 @@ class MainTabScreen extends StatelessWidget {
             controller: ctr.pageController,
             onPageChanged: ctr.setTabIndex,
             physics: NeverScrollableScrollPhysics(),
-            children: [HomeScreen(), SearchScreen(), Text("Notification")],
+            children: [
+              HomeScreen(),
+              SearchScreen(),
+              NotifivationScreen(),
+              Text("Profile"),
+            ],
           ),
           bottomNavigationBar: BottomNavyBar(
             selectedIndex: ctr.currntIndex,
