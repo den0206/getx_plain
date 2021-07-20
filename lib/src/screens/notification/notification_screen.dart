@@ -4,6 +4,7 @@ import 'package:getx_plain/src/constants/colors.dart';
 import 'package:getx_plain/src/model/notification.dart';
 import 'package:getx_plain/src/screens/notification/notification_controller.dart';
 import 'package:getx_plain/src/sec/convert_helper.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class NotifivationScreen extends GetView<NotificationController> {
   const NotifivationScreen({Key? key}) : super(key: key);
@@ -105,7 +106,13 @@ class NotificationCell extends StatelessWidget {
               children: [
                 notification.iconURL == null
                     ? Container()
-                    : Padding(padding: EdgeInsets.all(8), child: Container()),
+                    : Padding(
+                        padding: EdgeInsets.all(8),
+                        child: FadeInImage(
+                            placeholder: MemoryImage(kTransparentImage),
+                            width: 70,
+                            height: 50,
+                            image: AssetImage(notification.iconURL!))),
                 Expanded(
                     child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

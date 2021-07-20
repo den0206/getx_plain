@@ -15,8 +15,10 @@ dependencies:
   bottom_navy_bar: ^6.0.0
   cupertino_icons: ^1.0.2
   get: ^4.1.4
+  http: ^0.13.3
   intl: ^0.17.0
   line_icons: ^2.0.1
+  step_progress_indicator: ^1.0.1
   transparent_image: ^2.0.0
 
 dev_dependencies:

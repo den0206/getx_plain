@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:getx_plain/src/screens/home/home_screen.dart';
 import 'package:getx_plain/src/screens/notification/notification_controller.dart';
 import 'package:getx_plain/src/screens/notification/notification_screen.dart';
+import 'package:getx_plain/src/screens/profile/profile_screen.dart';
 import 'package:getx_plain/src/screens/search/search_screen.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -13,6 +14,7 @@ class TabController extends GetxController {
   final pageController = PageController();
   final animationDuration = Duration(milliseconds: 350);
 
+  /// relation
   final notification = Get.find<NotificationController>().notificationMessages;
   late List<BottomNavyBarItem> navigationItems;
   var currntIndex = 0;
@@ -91,7 +93,7 @@ class MainTabScreen extends StatelessWidget {
               HomeScreen(),
               SearchScreen(),
               NotifivationScreen(),
-              Text("Profile"),
+              ProfileScreen(),
             ],
           ),
           bottomNavigationBar: BottomNavyBar(
