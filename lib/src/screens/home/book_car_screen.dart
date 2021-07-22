@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_plain/src/constants/colors.dart';
 import 'package:getx_plain/src/extensions/image_widgets.dart';
+import 'package:getx_plain/src/extensions/open_dialog.dart';
 import 'package:getx_plain/src/extensions/title_widgets.dart';
 import 'package:getx_plain/src/model/car.dart';
 
@@ -100,6 +101,10 @@ class BookCarScreen extends StatelessWidget {
             ],
           ),
           InkWell(
+            onTap: () {
+              // OpenDialog.showSuccess("Good");
+              OpenDialog.showError("No");
+            },
             child: Container(
               height: 40,
               decoration: BoxDecoration(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:getx_plain/src/extensions/image_widgets.dart';
 import 'package:get/get.dart';
+import 'package:getx_plain/src/extensions/open_dialog.dart';
 import 'package:getx_plain/src/screens/auth/signup_screen.dart';
 import 'package:getx_plain/src/screens/main/main_tab_screen.dart';
 
@@ -135,7 +136,20 @@ class _LoginForm extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: TextButton(
               child: Text("Forgot your Password"),
-              onPressed: () {},
+              onPressed: () {
+                // OpenDialog.info(
+                //   title: "Sample",
+                //   content: "Sample",
+                //   lottieFile: 'thinking',
+                //   onClick: () {},
+                // );
+
+                OpenDialog.confitm(
+                  title: "Samole",
+                  content: "Smaple",
+                  lottieFile: 'thinking',
+                );
+              },
             ),
           ),
           GestureDetector(

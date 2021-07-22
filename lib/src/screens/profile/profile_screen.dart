@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:getx_plain/src/extensions/avatar_widget.dart';
+import 'package:getx_plain/src/extensions/open_dialog.dart';
 import 'package:getx_plain/src/screens/profile/profile_controller.dart';
 import 'package:line_icons/line_icons.dart';
 
@@ -29,32 +30,38 @@ class ProfileScreen extends GetView<ProfileController> {
                   children: [
                     _header(),
                     _buildbody(),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      child: ElevatedButton.icon(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.red[300],
-                          padding: EdgeInsets.symmetric(vertical: 12),
-                          elevation: 0.2,
-                          textStyle: TextStyle(
-                            fontSize: 21,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        icon: Icon(
-                          LineIcons.alternateSignOut,
-                          size: 27,
-                        ),
-                        label: Text("Sign out"),
-                      ),
-                    )
+                    _buildbutton(),
                   ],
                 ),
               ),
             ),
           )
         ],
+      ),
+    );
+  }
+
+  Padding _buildbutton() {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      child: ElevatedButton.icon(
+        onPressed: () {
+          OpenDialog.showSuccess("Logout");
+        },
+        style: ElevatedButton.styleFrom(
+          primary: Colors.red[300],
+          padding: EdgeInsets.symmetric(vertical: 12),
+          elevation: 0.2,
+          textStyle: TextStyle(
+            fontSize: 21,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        icon: Icon(
+          LineIcons.alternateSignOut,
+          size: 27,
+        ),
+        label: Text("Sign out"),
       ),
     );
   }
